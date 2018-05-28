@@ -33,12 +33,14 @@ public class AppConst {
     public final static String RING_CMD_REBOOT = "reboot-ring";
     public final static String RING_CMD_SETDATE = "set-time";
     public final static String RING_CMD_START = "start-recording";
+    public final static String RING_CMD_ACK = "ack";
 
 
     public static final String RING_SERVICE = "19B10000-E8F2-537E-4F6C-D104768A1214";
     public static final String DATA_CHARACTERISTIC = "19B10005-E8F2-537E-4F6C-D104768A1214";
     public static final String CMD_CHARACTERISTIC = "19B10010-E8F2-537E-4F6C-D104768A1214";
     public static final String LED_CHARACTERISTIC = "19B10001-E8F2-537E-4F6C-D104768A1214";
+    public static final String ACK_CHARACTERISTIC = "19B10006-E8F2-537E-4F6C-D104768A1214";
         /*
         const val TEMP1_CHARACTERISTIC = "19B10020-E8F2-537E-4F6C-D104768A1214"
         const val STEP_CHARACTERISTIC = "19B10010-E8F2-537E-4F6C-D104768A1214"
@@ -54,6 +56,7 @@ public class AppConst {
     public static final UUID UUID_DATA_CHARACTERISTIC = UUID.fromString(DATA_CHARACTERISTIC);
     public static final UUID UUID_LED_CHARACTERISTIC = UUID.fromString(LED_CHARACTERISTIC);
     public static final UUID UUID_CMD_CHARACTERISTIC = UUID.fromString(CMD_CHARACTERISTIC);
+    public static final UUID UUID_ACK_CHARACTERISTIC = UUID.fromString(ACK_CHARACTERISTIC);
         /*
               val UUID_TEMP1_CHARACTERISTIC: UUID = UUID.fromString(TEMP1_CHARACTERISTIC)
               val UUID_STEP_CHARACTERISTIC: UUID = UUID.fromString(STEP_CHARACTERISTIC)

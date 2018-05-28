@@ -33,13 +33,14 @@ public class RingCommand {
     private String mCommand = AppConst.RING_CMD_NOP;
     private byte mCommandId = COMMAND_NONE;
 
-    private final static byte COMMAND_CALIBRATE = 12;
-    private final static byte COMMAND_LED_CONFIG = 2;
-    private final static byte COMMAND_RESET = 17;
+    private final static byte COMMAND_CALIBRATE = 0x12;
+    private final static byte COMMAND_LED_CONFIG = 0x02;
+    private final static byte COMMAND_RESET = 0x17;
     private final static byte COMMAND_NONE = 127;
-    private final static byte COMMAND_REBOOT = 22;
-    private final static byte COMMAND_START = 25;
-    private final static byte COMMAND_NOP = 9;
+    private final static byte COMMAND_REBOOT = 0x22;
+    private final static byte COMMAND_START = 0x25;
+    private final static byte COMMAND_NOP = 0x9;
+    private final static byte COMMAND_ACK = 0x26;
 
 
     /*
@@ -78,6 +79,10 @@ public class RingCommand {
                 Log.d(TAG, "Command NO-OP");
                 mCommandId = COMMAND_NOP;
                 break;
+            case AppConst.RING_CMD_ACK:
+                Log.d(TAG, "Command ACK");
+                mCommandId = COMMAND_ACK;
+                break;
             default:
                 Log.e(TAG, "Illegal command: " + cmdCode);
                 mCommandId = COMMAND_NONE;
@@ -109,7 +114,7 @@ public class RingCommand {
      *
      * @return byte[] Readily compiled array ready for sending
      */
-    public byte[] getSequence() {
+    public byte[] getSequence(int value) {
         byte[] data;
         switch (mCommandId) {
             case COMMAND_REBOOT:
@@ -123,6 +128,12 @@ public class RingCommand {
             case COMMAND_CALIBRATE:
                 data = new byte[1];
                 data[0] = COMMAND_CALIBRATE;
+                break;
+            case COMMAND_ACK:
+                data = new byte[2];
+                byte arvo = (byte) value;
+                data[0] = (byte)(value & 0x00ff);
+                data[1] = (byte)((value & 0xff00) >> 8);
                 break;
             case COMMAND_LED_CONFIG:
                 /**

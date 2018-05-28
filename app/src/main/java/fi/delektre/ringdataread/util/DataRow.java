@@ -1,13 +1,13 @@
-package fi.delektre.ringdataread;
+package fi.delektre.ringdataread.util;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+//import android.content.ContentValues;
+//import android.database.Cursor;
 
 /**
  * Created by t2r on 11/03/18.
  */
 
-public class DataRow {
+class DataRow {
     private int id;
     private int ledRed, ledGreen, ledBlue, ledNIR, ledYellow, temp1, temp2, steps, timeValue;
     private float pos_lat, pos_long, pos_alt;
